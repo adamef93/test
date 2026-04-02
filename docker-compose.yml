@@ -1,3 +1,19 @@
+networks:
+  browser:
+    external:
+      name: browser
 services:
-  test:
-    image: alpine:latest
+  chrome:
+    image: lscr.io/linuxserver/chrome:latest
+    container_name: chrome-test
+    network_mode: browser
+    group_add:
+      - '993'
+    devices:
+      - /dev/dri/:/dev/dri/
+    environment:
+      - TZ=America/New_York
+      - DISABLE_IPV6=true
+    volumes:
+      - /chungus/browser:/config/Downloads
+    shm_size: "1gb"
