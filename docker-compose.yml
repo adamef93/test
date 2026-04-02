@@ -7,13 +7,11 @@ services:
     image: lscr.io/linuxserver/chrome:latest
     container_name: chrome-test
     network_mode: browser
+    env_file: stack.env
     group_add:
       - '993'
     devices:
       - /dev/dri/:/dev/dri/
-    environment:
-      - TZ=America/New_York
-      - DISABLE_IPV6=true
     volumes:
       - /chungus/browser:/config/Downloads
     shm_size: "1gb"
